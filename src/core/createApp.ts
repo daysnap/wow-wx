@@ -1,5 +1,4 @@
-
-import '@typings'
+/// <reference path="../../typings/index.d.ts" />
 
 interface AppOptions extends IAppOption {
   mixins?: []
