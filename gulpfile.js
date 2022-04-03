@@ -8,7 +8,7 @@ const paths = {
     esm: 'es',
   },
   scripts: [
-    'src/**/*.{ts}'
+    'src/**/*.ts'
   ]
 }
 
