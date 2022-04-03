@@ -1,0 +1,34 @@
+
+// https://github.com/worldzhao/blog/issues/5
+
+module.exports = {
+  presets: [
+    '@babel/env',
+    '@babel/typescript',
+    '@babel/react'
+  ],
+  plugins: [
+    '@babel/plugin-transform-runtime',
+    '@babel/proposal-class-properties'
+  ],
+  env: {
+    es: {
+      presets: [
+        [
+          '@babel/env',
+          {
+            modules: false,
+          },
+        ],
+      ],
+      plugins: [
+        [
+          '@babel/plugin-transform-runtime',
+          {
+            useESModules: true,
+          },
+        ],
+      ],
+    },
+  },
+}

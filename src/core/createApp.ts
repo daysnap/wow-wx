@@ -1,5 +1,5 @@
 
-
+import '@typings'
 
 interface AppOptions extends IAppOption {
   mixins?: []
