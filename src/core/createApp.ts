@@ -1,7 +1,10 @@
 
-
-const createApp = (options) => {
-
+interface AppOptions extends IAppOption {
+  mixins?: []
 }
 
-export default
+const createApp = (options: AppOptions) => {
+  return App<IAppOption>(options)
+}
+
+export default createApp
