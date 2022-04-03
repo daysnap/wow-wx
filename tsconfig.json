@@ -19,6 +19,8 @@
     "pretty": true,
     "strictPropertyInitialization": true,
     "lib": ["es6"],
+    "declaration": true,
+    "declarationDir": "lib",
     "typeRoots": [
       "./typings"
     ]

@@ -8,6 +8,7 @@
     "**/__tests__/**",
     "**/demo/**",
     "node_modules",
+    "typings",
     "lib",
     "es",
   ]
