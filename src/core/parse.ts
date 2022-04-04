@@ -9,10 +9,15 @@ const initTarget = (keys: string[]) => {
 }
 
 const mixinTarget = (target: IAnyOne, options: Options, keys: string[]) => {
-  Object.keys(options).filter(k => keys.includes(k))
+  Object.keys(options)
+    .filter(k => keys.includes(k))
+    .forEach(k => target[k].push(options[k]))
   return target
 }
 
+const emitTarget = () => {
+  
+}
 
 export const parseAppOptions = (options: AppOptions) => {
   const { mixins } = options
