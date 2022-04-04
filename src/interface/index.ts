@@ -1,10 +1,10 @@
 /// <reference path="../../typings/index.d.ts" />
 
-export interface AnyOne { [key: string]: any }
+export interface IAnyOne { [key: string]: any }
 
-export interface Options extends AnyOne {
-  mixins?: Options,
-  data?: AnyOne
+export interface Options extends IAnyOne {
+  mixins?: Options[],
+  data?: IAnyOne
 }
 
 export type AppOptions =

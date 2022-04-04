@@ -6,7 +6,6 @@
     },
     "target": "esnext",
     "module": "commonjs",
-    "jsx": "react",
     "declaration": true,
     "declarationDir": "lib",
     "strict": true,
