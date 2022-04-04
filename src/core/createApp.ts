@@ -1,8 +1,5 @@
-/// <reference path="../../typings/index.d.ts" />
 
-interface AppOptions extends IAppOption {
-  mixins?: []
-}
+import type { AppOptions } from '../interface'
 
 const createApp = (options: AppOptions) => {
   return App<IAppOption>(options)
