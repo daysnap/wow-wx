@@ -1,7 +1,6 @@
 
-import type { AppOptions, PageOptions, IAnyOne, Options } from '../interface'
-
-import { FUNCTION_PAGE_HOOKS } from '../utils/constant'
+import type { IAnyOne, Options } from '../interface'
+import { FUNCTION_COMPONENT_HOOKS, FUNCTION_PAGE_HOOKS } from './constant'
 
 const initTarget = (keys: string[]) => {
   return keys.reduce<IAnyOne>((res, key) => {
@@ -27,31 +26,18 @@ const nestTarget = (target: IAnyOne, options: Options) => {
     })
 }
 
-export const parseAppOptions = (options: AppOptions) => {
-  const { mixins } = options
-  if (!mixins || !mixins.length) {
-
-  }
-}
-
-export const parsePageOptions = (options: PageOptions) => {
+export const parseOptions = (options: Options, isComponent = false) => {
   const { mixins, data = {} } = options
   delete options.mixins
   if (!mixins || !mixins.length) {
     return options
   }
-  const [ mixinData, mixinOption, target ] = parseMixins(mixins, FUNCTION_PAGE_HOOKS)
-  mixinTarget(target, options, FUNCTION_PAGE_HOOKS)
-  options = Object.assign({}, mixinOption, options)
-  options.data = Object.assign({}, mixinData, data)
-  nestTarget(target, options)
-  return options
-}
 
-const parseMixins = (mixins: Options[], keys: string[]) => {
+  const keys = isComponent ? FUNCTION_COMPONENT_HOOKS : FUNCTION_PAGE_HOOKS
   const mixinData: IAnyOne = {}
   const mixinOption: IAnyOne = {}
   const target = initTarget(keys)
+
   let loop: any
   ;(loop = (mixins: Options[]) => {
     mixins.forEach(({ ...item }) => {
@@ -68,5 +54,22 @@ const parseMixins = (mixins: Options[], keys: string[]) => {
       Object.assign(mixinOption, item)
     })
   })(mixins)
-  return [mixinData, mixinOption, target]
+
+  mixinTarget(target, options, keys)
+
+  if (isComponent) {
+    if (!options.methods) {
+      options.methods = {}
+    }
+    options.methods = Object.assign({}, mixinOption, options.methods)
+  } else {
+    options = Object.assign({}, mixinOption, options)
+  }
+  options.data = Object.assign({}, mixinData, data)
+
+  nestTarget(target, options)
+
+  return options
 }
+
+export default parseOptions
