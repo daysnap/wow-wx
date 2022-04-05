@@ -1,10 +1,11 @@
 
 import type { AppOptions } from '../interface'
-import { parseOptions } from '../utils/parseOptions'
+import { parseOptions as __parseOptions } from '../utils/parseOptions'
 
 const createApp = (options: AppOptions) => {
-  const { mixins, ...rest } = options
-  const wow$ = { parseOptions, mixins }
+  const { mixins: __mixins, ...rest } = options
+  const wow$ = { __parseOptions, __mixins }
+
   return App({ ...rest, wow$ })
 }
 
