@@ -1,14 +1,18 @@
 
 import type { PageOptions } from '../interface'
 
-const { __parseOptions: parseOptions, __mixins: mixins = [] } = getApp().wow$
+const App = getApp() || {}
+
+console.log('APP => ', App)
+
+const { __parseOptions: parseOptions, __mixins: mixins = []  } = App.wow$ || {}
 
 const createPage = (options: PageOptions) => {
   if (!options.mixins) {
     options.mixins = []
   }
   options.mixins.unshift(...mixins)
-  options = parseOptions(options)
+  // options = parseOptions(options)
   return Page(options)
 }
 

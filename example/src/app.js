@@ -12,3 +12,5 @@ createApp({
     console.log('options => ', options)
   }
 })
+
+console.log('dd => ', getApp())
