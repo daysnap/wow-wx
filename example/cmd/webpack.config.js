@@ -211,7 +211,7 @@ const config = {
         fs: 'empty'
     },
     plugins: [
-        uglifyJsPlugin,
+        // uglifyJsPlugin,
         new ExtractTextPlugin('[name].wxss'),
     ]
 };

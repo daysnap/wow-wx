@@ -3,7 +3,7 @@ import type { PageOptions } from '../interface'
 
 const App = getApp() || {}
 
-console.log('APP => ', App)
+console.log('2222 => ', App)
 
 const { __parseOptions: parseOptions, __mixins: mixins = []  } = App.wow$ || {}
 
