@@ -1,2 +1,2 @@
 
-export default (opts: WechatMiniprogram.App.GetAppOption) => getApp(opts)
+export default (opts?: WechatMiniprogram.App.GetAppOption) => getApp(opts)

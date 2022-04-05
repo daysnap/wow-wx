@@ -4,13 +4,13 @@ import getApp from './getApp'
 
 const { parseOptions, mixins = [] } = getApp().wow$
 
-const createPage = (options: PageOptions) => {
+const createComponent = (options: PageOptions) => {
   if (!options.mixins) {
     options.mixins = []
   }
   options.mixins.unshift(...mixins)
-  options = parseOptions(options)
-  return Page(options)
+  options = parseOptions(options, true)
+  return Component(options)
 }
 
-export default createPage
+export default createComponent
