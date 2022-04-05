@@ -26,14 +26,13 @@ const nestTarget = (target: IAnyOne, options: Options) => {
     })
 }
 
-export const parseOptions = (options: Options, isComponent = false) => {
+export const parseOptions = (options: Options, keys: string[], isComponent = false) => {
   const { mixins, data = {} } = options
   delete options.mixins
   if (!mixins || !mixins.length) {
     return options
   }
 
-  const keys = isComponent ? FUNCTION_COMPONENT_HOOKS : FUNCTION_PAGE_HOOKS
   const mixinData: IAnyOne = {}
   const mixinOption: IAnyOne = {}
   const target = initTarget(keys)

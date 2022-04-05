@@ -44,18 +44,20 @@ const rootOutDirectoryAbsolutePath = path.join(cmdPath, rootOutputPath);
     });
 })(rootDirectoryAbsolutePath);
 
-let uglifyJsPlugin = new webpack.optimize.UglifyJsPlugin({
-    compress: {
-        unused: true,
-        dead_code: true,
-        warnings: false,
-        screw_ie8: true,
-    }
-});
+// let uglifyJsPlugin = new webpack.optimize.UglifyJsPlugin({
+//     compress: {
+//         unused: true,
+//         dead_code: true,
+//         warnings: false,
+//         screw_ie8: true,
+//     }
+// });
 
 const config = {
-    entry: entry,
-    output: {
+  mode: 'production',
+  // mode: 'development',
+  entry: entry,
+  output: {
         filename: '[name].js',
         path: rootOutDirectoryAbsolutePath,
     },
@@ -69,7 +71,7 @@ const config = {
         rules: [
             {
                 test: /\.js(\?[^?]+)?$/,
-                loaders: ['babel-loader'],
+                loader: 'babel-loader',
                 include: [
                     path.resolve(__dirname, '../node_modules/wow-wx'),
                     path.resolve(__dirname, '../src'),

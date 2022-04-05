@@ -63,5 +63,5 @@ module.exports = function (content) {
         let { source_dir, output_dir } = item;
         new Copy().file(source_dir, output_dir);
     });
-    return ''
+    return '111'
 };

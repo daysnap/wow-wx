@@ -1,16 +1,13 @@
 
 import type { PageOptions } from '../interface'
 
-const App = getApp() || {}
-
-const { __parseOptions: parseOptions, __mixins: mixins = [] } = App.wow$ || {}
-
 const createComponent = (options: PageOptions) => {
+  const { __parseOptions: parseOptions, __mixins: mixins = [], __constant } = getApp().wow$
   if (!options.mixins) {
     options.mixins = []
   }
   options.mixins.unshift(...mixins)
-  // options = parseOptions(options, true)
+  options = parseOptions(options, __constant.FUNCTION_COMPONENT_HOOKS, true)
   return Component(options)
 }
 

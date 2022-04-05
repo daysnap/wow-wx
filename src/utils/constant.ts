@@ -1,11 +1,4 @@
 
-export const FUNCTION_APP_HOOKS = [
-  'onLaunch',
-  'onShow',
-  'onHide',
-  'onError',
-]
-
 export const FUNCTION_PAGE_HOOKS = [
   'onLoad',
   'onShow',
@@ -19,6 +12,4 @@ export const FUNCTION_PAGE_HOOKS = [
   'onTabItemTap',
 ]
 
-export const FUNCTION_COMPONENT_HOOKS = [
-
-]
+export const FUNCTION_COMPONENT_HOOKS = []

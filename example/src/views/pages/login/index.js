@@ -5,9 +5,15 @@ import './index.wxml'
 
 import { createPage } from 'wow-wx'
 
+const dd = () => new Promise((resolve, reject) => {
+  setTimeout(resolve, 1000)
+})
+
 createPage({
-  onLoad(query) {
-    console.log('query => ', query)
+  async onLoad(query) {
+    console.log('1 => ', query)
+    await dd()
+    console.log('22')
   }
 })
 
