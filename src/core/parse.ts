@@ -35,22 +35,38 @@ export const parseAppOptions = (options: AppOptions) => {
 }
 
 export const parsePageOptions = (options: PageOptions) => {
-  const { mixins } = options
+  const { mixins, data = {} } = options
   delete options.mixins
   if (!mixins || !mixins.length) {
     return options
   }
-  const target = initTarget(FUNCTION_PAGE_HOOKS)
-
-  const mixinData: IAnyOne = {}
-  const mixinOption: IAnyOne = {}
-
-  let loop
-
-
+  const [ mixinData, mixinOption, target ] = parseMixins(mixins, FUNCTION_PAGE_HOOKS)
+  mixinTarget(target, options, FUNCTION_PAGE_HOOKS)
+  options = Object.assign({}, mixinOption, options)
+  options.data = Object.assign({}, mixinData, data)
+  nestTarget(target, options)
+  return options
 }
 
-const parseOptions = (options: Options) => {
-  const { mixins } = options
-  
+const parseMixins = (mixins: Options[], keys: string[]) => {
+  const mixinData: IAnyOne = {}
+  const mixinOption: IAnyOne = {}
+  const target = initTarget(keys)
+  let loop: any
+  ;(loop = (mixins: Options[]) => {
+    mixins.forEach(({ ...item }) => {
+      const { mixins, data } = item
+      delete item.mixins
+      delete item.data
+      if (mixins) {
+        loop(mixins)
+      }
+      if (data) {
+        Object.assign(mixinData, data)
+      }
+      mixinTarget(target, item, keys)
+      Object.assign(mixinOption, item)
+    })
+  })(mixins)
+  return [mixinData, mixinOption, target]
 }
