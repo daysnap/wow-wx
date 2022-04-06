@@ -6,8 +6,7 @@ import './index.wxml'
 import { createPage } from 'wow-wx'
 
 createPage({
-  onLoad(query) {
-    console.log('query => ', query)
-  }
+    onLoad(query) {
+        console.log('query => ', query)
+    }
 })
-

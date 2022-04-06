@@ -1,17 +1,10 @@
 
-<view class="title">
-    <text>WOW-WX</text>
+<view>
+    <text>主包 HOME - 2</text>
 </view>
 
-<view class="operate">
-    <button
-        class="operate-button cancel"
-        bindtap="routerPop"
-    >拒绝</button>
-    <button
-        class="operate-button sure"
-        open-type="getUserInfo"
-        bindgetuserinfo="handleGetUser"
-    >登录</button>
-</view>
+<button bindtap="handleTest">跳转到登录页面</button>
+<button bindtap="jumpPageOrFireFn" data-url="module_home_index" data-params="{{ {x: 1} }}">跳转到分包主页页面</button>
+<button bindtap="jumpPageOrFireFn" data-url="module_login_index" data-params="{{ {x: 1} }}">跳转到分包登录页面</button>
 
+<template-component></template-component>

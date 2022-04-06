@@ -3,17 +3,10 @@ import './index.json'
 import './index.scss'
 import './index.wxml'
 
-import { createPage } from 'wow-wx'
-
-const dd = () => new Promise((resolve, reject) => {
-  setTimeout(resolve, 1000)
-})
+import createPage from 'wow-wx/es/core/createPage'
 
 createPage({
-  async onLoad(query) {
-    console.log('1 => ', query)
-    await dd()
-    console.log('22')
-  }
+    onLoad(query) {
+        console.log('query => ', query)
+    }
 })
-

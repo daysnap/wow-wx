@@ -1,3 +1,5 @@
 {
-    "navigationBarTitleText": "分包登录"
+    "navigationBarTitleText": "主页",
+    "usingComponents": {
+    }
 }

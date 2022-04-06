@@ -1,6 +1,5 @@
 
 import type { IAnyOne, Options } from '../interface'
-import { FUNCTION_COMPONENT_HOOKS, FUNCTION_PAGE_HOOKS } from './constant'
 
 const initTarget = (keys: string[]) => {
   return keys.reduce<IAnyOne>((res, key) => {
