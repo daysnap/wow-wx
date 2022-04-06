@@ -3,12 +3,9 @@ import './index.json'
 import './index.scss'
 import './index.wxml'
 
-import createPage from 'wow-wx/es/core/createPage'
+import WowPage from 'wow-wx/lib/page'
 
-createPage({
-    mixins: [
-        createPage.wow$.mixins.Modal
-    ],
+new WowPage({
     onLoad(query) {
         console.log('query => ', query)
     }

@@ -2,6 +2,7 @@
 import * as __constant from './utils/constant'
 import type { IAppOptions, IWow, IPlugin } from './interface'
 import Core from './core'
+import './extend/promise'
 
 export default class WowApp extends Core {
 

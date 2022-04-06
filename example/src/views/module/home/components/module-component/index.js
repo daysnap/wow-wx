@@ -1,14 +1,12 @@
+//index.js
 import './index.json'
-import './index.wxml'
 import './index.scss'
+import './index.wxml'
 
-import { createComponent } from 'wow-wx'
+import WowComponent from 'wow-wx/lib/component'
 
-createComponent({
-    externalClasses: ['class-external'],
-    options: {
-        multipleSlots: true,
-        addGlobalClass: true,
-    },
-    properties: {},
-});
+new WowComponent({
+    onLoad(query) {
+        console.log('query => ', query)
+    }
+})
