@@ -17,6 +17,7 @@
       "es6",
       "es7"
     ],
+//    "outDir": "lib",
     "typeRoots": [
       "./typings"
     ]

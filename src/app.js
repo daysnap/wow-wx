@@ -9,7 +9,7 @@ import WowApp from 'wow-wx/lib/app'
 new WowApp({
     onLaunch(options) {
         console.log('小程序开始加载啦1', options);
-        console.log('this.wow$2 => ', this.wow$);
+        console.log('this.wow$21 => ', this.wow$);
     },
     onError (msg) {
         console.log('[APP ERROR] => ',msg);

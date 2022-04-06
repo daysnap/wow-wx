@@ -8,11 +8,11 @@ export default class WowPage extends Core {
 
   constructor(options: IPageOptions) {
     super()
-    if (options.mixins) {
+    const { __mixins, __constant } = wow$ as IWow
+    if (!options.mixins) {
       options.mixins = []
     }
-    const { __mixins, __constant } = wow$ as IWow
-    options.mixins?.unshift(...__mixins)
+    options.mixins!!.unshift(...__mixins)
     options = this.parseOptions(options, __constant.FUNCTION_PAGE_HOOKS)
     Page(options)
   }

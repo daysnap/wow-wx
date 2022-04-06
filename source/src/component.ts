@@ -8,11 +8,11 @@ export default class WowComponent extends Core {
 
   constructor(options: IComponentOptions) {
     super()
-    if (options.mixins) {
+    const { __mixins, __constant } = wow$ as IWow
+    if (!options.mixins) {
       options.mixins = []
     }
-    const { __mixins, __constant } = wow$ as IWow
-    options.mixins?.unshift(...__mixins)
+    options.mixins!!.unshift(...__mixins)
     options = this.parseOptions(options, __constant.FUNCTION_COMPONENT_HOOKS, true)
     Component(options)
   }

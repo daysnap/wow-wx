@@ -63,6 +63,8 @@ const config = {
         alias: {
             'src': path.resolve(__dirname, '../src/'),
             'source': path.resolve(__dirname, '../source/'),
+            'wow-wx': path.resolve(__dirname, '../source/'),
+            // 'wow-wx': path.resolve(__dirname, '../../'),
         }
     },
     module: {
@@ -74,6 +76,7 @@ const config = {
                     path.resolve(__dirname, '../node_modules/wow-wx'),
                     path.resolve(__dirname, '../src'),
                     path.resolve(__dirname, '../source'),
+                    path.resolve(__dirname, '../../'),
                 ],
             },
             {

@@ -18,7 +18,10 @@ export default class WowApp extends Core {
   }
 
   static use (plugin: IPlugin) {
-    plugin.install?.(WowApp.wow$)
+    const { install } = plugin
+    if (install) {
+      install(WowApp.wow$)
+    }
   }
 
 }
