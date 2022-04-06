@@ -9,7 +9,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf lib es",
     "build": "npm run build:types && gulp",
-    "build:types": "npm run clean && tsc -p tsconfig.build.json && cpr lib es"
+    "build:types": "npm run clean && tsc -p tsconfig.build.json",
+    "cpr": "cpr lib es"
   },
   "repository": {
     "type": "git",

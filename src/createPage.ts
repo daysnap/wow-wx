@@ -1,8 +1,10 @@
 
-import type { PageOptions } from '../interface'
+import type { PageOptions } from './interface'
+
+const { wow$ } = getApp()
+const { __parseOptions: parseOptions, __mixins: mixins = [], __constant } = wow$
 
 const createPage = (options: PageOptions) => {
-  const { __parseOptions: parseOptions, __mixins: mixins = [], __constant } = getApp().wow$
   if (!options.mixins) {
     options.mixins = []
   }
@@ -10,5 +12,7 @@ const createPage = (options: PageOptions) => {
   options = parseOptions(options, __constant.FUNCTION_PAGE_HOOKS)
   return Page(options)
 }
+
+createPage.wow$ = wow$
 
 export default createPage

@@ -1,8 +1,10 @@
 
-import type { PageOptions } from '../interface'
+import type { PageOptions } from './interface'
+
+const { wow$ } = getApp()
+const { __parseOptions: parseOptions, __mixins: mixins = [], __constant } = wow$
 
 const createComponent = (options: PageOptions) => {
-  const { __parseOptions: parseOptions, __mixins: mixins = [], __constant } = getApp().wow$
   if (!options.mixins) {
     options.mixins = []
   }
@@ -10,5 +12,7 @@ const createComponent = (options: PageOptions) => {
   options = parseOptions(options, __constant.FUNCTION_COMPONENT_HOOKS, true)
   return Component(options)
 }
+
+createComponent.wow$ = wow$
 
 export default createComponent

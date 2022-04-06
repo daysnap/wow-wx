@@ -32,7 +32,7 @@ function compileESM() {
   return compileScripts('es', dest.esm)
 }
 
-const buildScripts = gulp.series(compileCJS, compileESM)
+const buildScripts = gulp.series(compileCJS)
 
 const build = gulp.parallel(buildScripts)
 
