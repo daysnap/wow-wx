@@ -1,6 +1,5 @@
 
-import type { Options, IAnyOne } from './interface'
-import { FUNCTION_PAGE_HOOKS, FUNCTION_COMPONENT_HOOKS } from './utils/constant'
+import type { IOptions, IAnyOne } from './interface'
 
 const initTarget = (keys: string[]) => {
   return keys.reduce<IAnyOne>((res, key) => {
@@ -9,14 +8,14 @@ const initTarget = (keys: string[]) => {
   }, {})
 }
 
-const mixinTarget = (target: IAnyOne, options: Options, keys: string[]) => {
+const mixinTarget = (target: IAnyOne, options: IOptions, keys: string[]) => {
   Object.keys(options)
     .filter(k => keys.includes(k))
     .forEach(k => target[k].push(options[k]))
   return target
 }
 
-const nestTarget = (target: IAnyOne, options: Options) => {
+const nestTarget = (target: IAnyOne, options: IOptions) => {
   Object.keys(target)
     .filter(k => !!target[k].length)
     .forEach(k => {
@@ -28,16 +27,7 @@ const nestTarget = (target: IAnyOne, options: Options) => {
 
 export default class Core {
 
-  options: Options
-
-  isComponent: boolean
-
-  constructor (options: Options, isComponent: boolean) {
-    this.options = options
-    this.isComponent = isComponent
-  }
-
-  parseOptions (options: Options, keys: string[], isComponent = false) {
+  parseOptions (options: IOptions, keys: string[], isComponent: boolean) {
     const { mixins, data = {} } = options
     delete options.mixins
     if (!mixins || !mixins.length) {
@@ -49,7 +39,7 @@ export default class Core {
     const target = initTarget(keys)
 
     let loop: any
-    ;(loop = (mixins: Options[]) => {
+    ;(loop = (mixins: IOptions[]) => {
       mixins.forEach(({ ...item }) => {
         const { mixins, data } = item
         delete item.mixins
