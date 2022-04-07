@@ -17,10 +17,10 @@ export default class WowApp extends Core {
     return { mixins: {}, Core, __mixins: [], __constant }
   }
 
-  static use (plugin: IPlugin) {
+  static use<T> (plugin: IPlugin<T>, options: T) {
     const { install } = plugin
     if (install) {
-      install(WowApp.wow$)
+      install(WowApp.wow$, options)
     }
   }
 
