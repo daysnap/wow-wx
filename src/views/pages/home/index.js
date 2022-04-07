@@ -7,6 +7,8 @@ import WowPage from 'wow-wx/lib/page'
 
 new WowPage({
     onLoad(query) {
+        console.log('page => ', WowPage.wow$)
         console.log('query => ', query)
+        this.d()
     }
 })

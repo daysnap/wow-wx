@@ -51,6 +51,7 @@ export const user = {
 
 const User: IPlugin<any> = {
   install (Wow){
+    console.log('ddd => ', Wow)
     Wow.mixins.User = user
   }
 }

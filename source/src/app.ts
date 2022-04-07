@@ -13,9 +13,7 @@ export default class WowApp extends Core {
     App({ ...rest, wow$: WowApp.wow$ })
   }
 
-  static get wow$(): IWow {
-    return { mixins: {}, Core, __mixins: [], __constant }
-  }
+  static wow$: IWow = { mixins: {}, Core, __mixins: [], __constant }
 
   static use<T> (plugin: IPlugin<T>, options: T) {
     const { install } = plugin
