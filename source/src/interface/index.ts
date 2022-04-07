@@ -25,6 +25,9 @@ export type IWow = {
   mixins: IAnyOne
 } & IAnyOne
 
-export interface IPlugin {
-  install?: (Wow: IWow) => void
+export type IPluginFunction<T> = (Wow: IWow, options?: T) => void
+
+export interface IPlugin<T> {
+  install: IPluginFunction<T>
+  [key: string]: any
 }
