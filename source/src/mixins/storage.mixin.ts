@@ -11,11 +11,11 @@ export function storageGet<T> (key: string) {
 }
 
 export function storageRemove (key: string) {
-  return promisify<WechatMiniprogram.RemoveStorageOption, void>(wx.removeStorage)({ key })
+  return promisify<WechatMiniprogram.RemoveStorageOption, WechatMiniprogram.RemoveStorageSuccessCallback>(wx.removeStorage)({ key })
 }
 
 export function storageClear () {
-  return promisify<WechatMiniprogram.ClearStorageOption, void>(wx.clearStorage)()
+  return promisify<WechatMiniprogram.ClearStorageOption, WechatMiniprogram.ClearStorageSuccessCallback>(wx.clearStorage)()
 }
 
 export const storage = {

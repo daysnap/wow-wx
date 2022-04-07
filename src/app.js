@@ -16,7 +16,8 @@ const dd = {
 }
 new WowApp({
     mixins: [
-        dd
+        dd,
+        WowApp.wow$.mixins.User,
     ],
     onLaunch(options) {
         console.log('小程序开始加载啦12', options);
