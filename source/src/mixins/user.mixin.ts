@@ -39,11 +39,14 @@ export const user = {
     return storageRemove($$USER_INFO)
   },
   userGetInfo () {
-    wx.getUserInfo({}).then((res) => {
-      
-    })
     return promisify<WechatMiniprogram.GetUserInfoOption, WechatMiniprogram.GetUserInfoSuccessCallbackResult>(wx.getUserInfo)()
-  }
+  },
+  userGetProfile (options?: WechatMiniprogram.GetUserProfileOption) {
+    return promisify<WechatMiniprogram.GetUserProfileOption, WechatMiniprogram.GetUserProfileSuccessCallback>(wx.getUserProfile || wx.getUserInfo)({
+      desc: '用于完善会员资料',
+      ...options,
+    })
+  },
 }
 
 const User: IPlugin<any> = {
