@@ -19,16 +19,30 @@ export const user = {
     })
   },
   userUpdate (data: IAnyOne = {}) {
-    let user
+    let user: any
     return new Promise((resolve, reject) => {
       this.userGet().then(res => {
         user = res
       }).catch(() => {
         user = {}
       }).finally(() => {
-
+        Object.assign(user, data)
+        storageSet($$USER_INFO, user).then(resolve).catch(reject);
+        (this as any).setData({ user$: user })
       })
     })
+  },
+  userLogin (options?: WechatMiniprogram.LoginOption) {
+    return promisify<WechatMiniprogram.LoginOption, WechatMiniprogram.LoginSuccessCallbackResult>(wx.login)(options)
+  },
+  userLogout () {
+    return storageRemove($$USER_INFO)
+  },
+  userGetInfo () {
+    wx.getUserInfo({}).then((res) => {
+      
+    })
+    return promisify<WechatMiniprogram.GetUserInfoOption, WechatMiniprogram.GetUserInfoSuccessCallbackResult>(wx.getUserInfo)()
   }
 }
 
