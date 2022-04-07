@@ -3,20 +3,23 @@ import { IPlugin } from '../interface'
 import { promisify } from './promisify.mixin'
 
 export interface IOptions {
-  exclude: (err: any) => boolean
+  filterMessage: (options: any) => any,
 }
 
 export const defaultOptions: IOptions = {
-  exclude: (err) => !err || ['', 'cancel'].includes(err),
+  filterMessage: options => options.errMsg || options.msg || options.message || JSON.stringify(options),
 }
 
-export function modalToast (options: WechatMiniprogram.ShowToastOption | string) {
-  if (typeof options === 'string') {
-    options = { title: options }
+export function modalToast (msg: any, options?: WechatMiniprogram.ShowToastOption) {
+  if (typeof msg === 'undefined') {
+    return
   }
-  const { exclude } = defaultOptions
-  if (exclude(options.title)) return
-  options = Object.assign({ duration: 3000, mask: true }, options)
+  const { filterMessage } = defaultOptions
+  const title = filterMessage(msg)
+  if (title === '') {
+    return
+  }
+  options = Object.assign({ duration: 3000, mask: true }, options, { title })
   return promisify<WechatMiniprogram.ShowToastOption, WechatMiniprogram.ShowToastSuccessCallback>(wx.showToast)(options)
 }
 
